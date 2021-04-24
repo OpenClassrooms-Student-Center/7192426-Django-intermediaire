@@ -3,7 +3,10 @@
         <title>FotoBlog</title>
     </head>
     <body>
-    <h1>FotoBlog</h1>
+        <h1>FotoBlog</h1>
         {% block content %}{% endblock content %}
+        {%  if user.is_authenticated %}
+            <p>You are logged in as {{ user }}. Click here to <a href="{% url 'logout' %}">log out</a></p>
+        {% endif %}
     </body>
 </html>
