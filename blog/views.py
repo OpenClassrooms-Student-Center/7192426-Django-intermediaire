@@ -20,11 +20,6 @@ def photo_upload(request):
 
 
 @login_required
-def photo_feed(request):
-    photos = models.Photo.objects.all()
-    return render(request, 'blog/photo_feed.html', context={'photos': photos})
-
-
-@login_required
 def home(request):
-    return render(request, 'blog/home.html')
+    photos = models.Photo.objects.all()
+    return render(request, 'blog/home.html', context={'photos': photos})
