@@ -9,10 +9,14 @@
             <h1>FotoBlog</h1>
             {% if user.is_authenticated %}
                 <p>Salut, {{ user }} !</p>
-                <img class="avatar" src="{% static 'images/default_profile.png'%}">
+                {% if user.profile_photo %}
+                    <img class="avatar" src={{ user.profile_photo.url }}>
+                {% else %}
+                    <img class="avatar" src="{% static 'images/default_profile.png'%}">
+                {% endif %}
                 <p><a href="{% url 'home' %}">Accueil</a></p>
                 <p><a href="{% url 'photo_upload' %}">Téléverser une photo</a></p>
-                <p><a href="">Changer la photo de profil</a></p>
+                <p><a href="{% url 'upload_profile_photo' %}">Changer la photo de profil</a></p>
                 <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
                 <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
             {% endif %}
