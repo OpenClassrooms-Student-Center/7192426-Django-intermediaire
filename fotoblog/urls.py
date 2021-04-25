@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView)
@@ -23,4 +25,10 @@ urlpatterns = [
          ),
     path('signup/', authentication.views.signup_page, name='signup'),
     path('home/', blog.views.home, name='home'),
+    path('photo/upload/', blog.views.photo_upload, name='photo_upload'),
+    path('photos/', blog.views.photo_feed, name='photo_feed'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
