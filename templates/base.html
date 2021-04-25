@@ -7,7 +7,7 @@
     <body>
         <div class="sidebar">
             <h1>FotoBlog</h1>
-            {%  if user.is_authenticated %}
+            {% if user.is_authenticated %}
                 <p>Salut, {{ user }} !</p>
                 <img class="avatar" src="{% static 'images/default_profile.png'%}">
                 <p><a href="{% url 'home' %}">Accueil</a></p>
