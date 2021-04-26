@@ -9,4 +9,15 @@
             </div>
         {% endfor %}
     </div>
+    <h2>Blogs</h2>
+    <div class="grid-container">
+        {% for blog in blogs %}
+            <div class="post">
+                <a href="{% url 'view_blog' blog.id %}">
+                    <h4>Blog Post: {{ blog.title }}</h4>
+                    <img src="{{ blog.photo.image.url }}">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

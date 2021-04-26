@@ -15,6 +15,7 @@
                     <img class="avatar" src="{% static 'images/default_profile.png'%}">
                 {% endif %}
                 <p><a href="{% url 'home' %}">Accueil</a></p>
+                <p><a href="{% url 'blog_create' %}">Create Blog Post</a></p>
                 <p><a href="{% url 'photo_upload' %}">Téléverser une photo</a></p>
                 <p><a href="{% url 'upload_profile_photo' %}">Changer la photo de profil</a></p>
                 <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
