@@ -16,7 +16,9 @@
                 {% endif %}
                 <p><a href="{% url 'home' %}">Accueil</a></p>
                 <p><a href="{% url 'blog_create' %}">Écrire un billet</a></p>
-                <p><a href="{% url 'photo_upload' %}">Téléverser une photo</a></p>
+                {% if perms.blog.add_photo %}
+                    <p><a href="{% url 'photo_upload' %}">Téléverser une photo</a></p>
+                {% endif %}
                 <p><a href="{% url 'create_multiple_photos' %}">Téléverser plusieurs photos</a></p>
                 <p><a href="{% url 'upload_profile_photo' %}">Changer la photo de profil</a></p>
                 <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
