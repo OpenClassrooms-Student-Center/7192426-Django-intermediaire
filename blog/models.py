@@ -28,3 +28,11 @@ class Blog(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     starred = models.BooleanField(default=False)
+    word_count = models.IntegerField(null=True)
+
+    def _get_word_count(self):
+        return len(self.content.split(' '))
+
+    def save(self, *args, **kwargs):
+        self.word_count = self._get_word_count()
+        super().save(*args, **kwargs)
