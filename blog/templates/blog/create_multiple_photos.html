@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Add Photos</h2>
+    <form method="post" enctype="multipart/form-data">
+        {{ formset.as_p }}
+        {% csrf_token %}
+        <button type="submit" >Save</button>
+    </form>
+{% endblock content %}
