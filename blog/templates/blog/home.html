@@ -17,7 +17,7 @@
                 <div class="post">
                     <img src="{{ instance.image.url }}">
                     <p>{{ instance.caption }}</p>
-                    <p><strong>Prise par {{ instance.uploader }}</strong></p>
+                    <p><strong>Prise par {% get_poster_display instance.uploader %}</strong></p>
                     <p>{{ instance.date_created }}</p>
                 </div>
             {% endif %}

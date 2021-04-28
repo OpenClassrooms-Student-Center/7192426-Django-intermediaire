@@ -24,6 +24,7 @@ def photo_upload(request):
     return render(request, 'blog/photo_upload.html', context={'form': form})
 
 
+@login_required
 def home(request):
     blogs = models.Blog.objects.filter(
         Q(contributors__in=request.user.follows.all()) | Q(starred=True))
