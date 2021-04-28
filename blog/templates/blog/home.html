@@ -10,7 +10,7 @@
                         <h4>Billet : {{ instance.title }}</h4>
                         <img src="{{ instance.photo.image.url }}">
                         <p><strong>Écrit par {{ instance.contributors.all|join:", " }}</strong></p>
-                        <p>{{ instance.date_created }}</p>
+                        <p>{{ instance.date_created|get_posted_at_display }}</p>
                     </a>
                 </div>
             {% elif instance|model_type == 'Photo' %}
@@ -18,7 +18,7 @@
                     <img src="{{ instance.image.url }}">
                     <p>{{ instance.caption }}</p>
                     <p><strong>Prise par {% get_poster_display instance.uploader %}</strong></p>
-                    <p>{{ instance.date_created }}</p>
+                    <p>{{ instance.date_created|get_posted_at_display }}</p>
                 </div>
             {% endif %}
         {% endfor %}
