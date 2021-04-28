@@ -1,0 +1,7 @@
+{% load blog_extras %}
+<div class="post">
+    <img src="{{ photo.image.url }}">
+    <p>{{ photo.caption }}</p>
+    <p><strong>Prise par {% get_poster_display photo.uploader %}</strong></p>
+    <p>{{ photo.date_created|get_posted_at_display }}</p>
+</div>
