@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Votre flux</h2>
     <div class="grid-container">
-        {% for instance in blogs_and_photos %}
+        {% for instance in page_obj %}
             {% if instance|model_type == 'Blog' %}
                 {% include 'blog/partials/blog_snippet.html' with blog=instance %}
             {% elif instance|model_type == 'Photo' %}
@@ -11,4 +11,19 @@
             {% endif %}
         {% endfor %}
     </div>
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
 {% endblock content %}
