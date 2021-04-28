@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
+{% load blog_extras %}
 {% block content %}
-    <h2>Photos</h2>
+    <h2>Your Feed</h2>
     <div class="grid-container">
-        {% for photo in photos %}
-            <div class="post">
-                <img src="{{ photo.image.url }}">
-                <p>{{ photo.caption }}</p>
-            </div>
-        {% endfor %}
-    </div>
-    <h2>Blog</h2>
-    <div class="grid-container">
-        {% for blog in blogs %}
-            <div class="post">
-                <a href="{% url 'view_blog' blog.id %}">
-                    <h4>Billet : {{ blog.title }}</h4>
-                    <img src="{{ blog.photo.image.url }}">
-                </a>
-            </div>
+        {% for instance in blogs_and_photos %}
+            {% if instance|model_type == 'Blog' %}
+                <div class="post">
+                    <a href="{% url 'view_blog' instance.id %}">
+                        <h4>Billet : {{ instance.title }}</h4>
+                        <img src="{{ instance.photo.image.url }}">
+                        <p><strong>Written by {{ instance.contributors.all|join:", " }}</strong></p>
+                        <p>{{ instance.date_created }}</p>
+                    </a>
+                </div>
+            {% elif instance|model_type == 'Photo' %}
+                <div class="post">
+                    <img src="{{ instance.image.url }}">
+                    <p>{{ instance.caption }}</p>
+                    <p><strong>Taken by {{ instance.uploader }}</strong></p>
+                    <p>{{ instance.date_created }}</p>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock content %}
