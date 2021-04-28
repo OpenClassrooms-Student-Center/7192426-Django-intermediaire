@@ -1,3 +1,5 @@
+from itertools import chain
+
 from django.contrib.auth.decorators import login_required, permission_required
 from django.forms import formset_factory
 from django.db.models import Q
@@ -27,11 +29,16 @@ def home(request):
         Q(contributors__in=request.user.follows.all()) | Q(starred=True))
     photos = models.Photo.objects.filter(
         uploader__in=request.user.follows.all()).exclude(
-        blog__in=blogs
+        blog__in=blogs)
+
+    blogs_and_photos = sorted(
+        chain(blogs, photos),
+        key=lambda instance: instance.date_created,
+        reverse=True
     )
+
     context = {
-        'blogs': blogs,
-        'photos': photos,
+        'blogs_and_photos': blogs_and_photos,
     }
     return render(request, 'blog/home.html', context=context)
 
