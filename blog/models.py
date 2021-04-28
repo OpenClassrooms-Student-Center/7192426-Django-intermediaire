@@ -25,7 +25,6 @@ class Blog(models.Model):
     photo = models.ForeignKey(Photo, null=True, on_delete=models.SET_NULL, blank=True)
     title = models.CharField(max_length=128, verbose_name='titre')
     content = models.CharField(max_length=5000, verbose_name='contenu')
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     contributors = models.ManyToManyField(
         settings.AUTH_USER_MODEL, through='BlogContributor', related_name='contributions')
     date_created = models.DateTimeField(auto_now_add=True)
