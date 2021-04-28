@@ -1,0 +1,9 @@
+{% load blog_extras %}
+<div class="post">
+    <a href="{% url 'view_blog' blog.id %}">
+        <h4>Billet : {{ blog.title }}</h4>
+        <img src="{{ blog.photo.image.url }}">
+        <p><strong>Écrit par {{ blog.contributors.all|join:", " }}</strong></p>
+        <p>{{ blog.date_created|get_posted_at_display }}</p>
+    </a>
+</div>

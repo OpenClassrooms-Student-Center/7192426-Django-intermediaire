@@ -5,14 +5,7 @@
     <div class="grid-container">
         {% for instance in blogs_and_photos %}
             {% if instance|model_type == 'Blog' %}
-                <div class="post">
-                    <a href="{% url 'view_blog' instance.id %}">
-                        <h4>Billet : {{ instance.title }}</h4>
-                        <img src="{{ instance.photo.image.url }}">
-                        <p><strong>Écrit par {{ instance.contributors.all|join:", " }}</strong></p>
-                        <p>{{ instance.date_created|get_posted_at_display }}</p>
-                    </a>
-                </div>
+                {% include 'blog/partials/blog_snippet.html' with blog=instance %}
             {% elif instance|model_type == 'Photo' %}
                 <div class="post">
                     <img src="{{ instance.image.url }}">
