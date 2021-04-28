@@ -123,3 +123,12 @@ def follow_users(request):
             form.save()
             return redirect('home')
     return render(request, 'blog/follow_users_form.html', context={'form': form})
+
+
+def photo_feed(request):
+    photos = models.Photo.objects.filter(
+        uploader__in=request.user.follows.all()).order_by('-date_created')
+    context = {
+        'photos': photos,
+    }
+    return render(request, 'blog/photo_feed.html', context=context)
