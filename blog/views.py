@@ -131,7 +131,8 @@ def follow_users(request):
 def photo_feed(request):
     photos = models.Photo.objects.filter(
         uploader__in=request.user.follows.all()).order_by('-date_created')
-    context = {
-        'photos': photos,
-    }
+    paginator = Paginator(photos, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'page_obj': page_obj}
     return render(request, 'blog/photo_feed.html', context=context)

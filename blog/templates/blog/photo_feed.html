@@ -2,8 +2,9 @@
 {% block content %}
     <h2>Flux de photos</h2>
     <div class="grid-container">
-        {% for photo in photos %}
+        {% for photo in page_obj %}
             {% include 'blog/partials/photo_snippet.html' %}
         {% endfor %}
     </div>
+    {% include 'partials/page_navigator.html' %}
 {% endblock content %}
