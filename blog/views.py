@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.forms import formset_factory
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
 from . import forms, models
@@ -21,11 +22,18 @@ def photo_upload(request):
     return render(request, 'blog/photo_upload.html', context={'form': form})
 
 
-@login_required
 def home(request):
-    photos = models.Photo.objects.all()
-    blogs = models.Blog.objects.all()
-    return render(request, 'blog/home.html', context={'photos': photos, 'blogs': blogs})
+    blogs = models.Blog.objects.filter(
+        Q(contributors__in=request.user.follows.all()) | Q(starred=True))
+    photos = models.Photo.objects.filter(
+        uploader__in=request.user.follows.all()).exclude(
+        blog__in=blogs
+    )
+    context = {
+        'blogs': blogs,
+        'photos': photos,
+    }
+    return render(request, 'blog/home.html', context=context)
 
 
 @login_required
