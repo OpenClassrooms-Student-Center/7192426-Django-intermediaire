@@ -16,8 +16,8 @@ def login_page(request):
             )
             if user is not None:
                 login(request, user)
-                message = f'Hello {user.username}! You have been logged in'
+                message = f'Bonjour, {user.username} ! Vous êtes connecté.'
             else:
-                message = 'Login failed!'
+                message = 'Identifiants invalides.'
     return render(
         request, 'authentication/login.html', context={'form': form, 'message': message})
