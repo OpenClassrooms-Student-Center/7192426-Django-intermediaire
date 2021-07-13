@@ -7,7 +7,7 @@
         {% block content %}{% endblock content %}
         {%  if user.is_authenticated %}
             <p>Vous êtes connecté en tant que {{ user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
-            <p>Want to <a href="{% url 'password_change' %}">change your password?</a></p>
+            <p>Voulez-vous <a href="{% url 'password_change' %}">changer votre mot de passe ?</a></p>
         {% endif %}
     </body>
 </html>
