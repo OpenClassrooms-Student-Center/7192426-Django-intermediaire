@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Upload a Photo</h2>
+    <h2>Téléverser une photo</h2>
     <form method="post" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit" >Submit</button>
+        <button type="submit" >Publier</button>
     </form>
-    <p>Not a member? <a href="{% url 'signup' %}">Sign up now!</a></p>
+    <p>Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
 {% endblock content %}
