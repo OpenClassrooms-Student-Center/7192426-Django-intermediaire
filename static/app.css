@@ -5,7 +5,7 @@ html {
 /* The sidebar menu */
 .sidebar {
     height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 190px; /* Set the width of the sidebar */
+    width: 220px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
@@ -32,7 +32,7 @@ html {
 
 /* Style page content */
 .main {
-    margin-left: 210px; /* Same as the width of the sidebar */
+    margin-left: 240px; /* Same as the width of the sidebar */
     padding: 20px;
 }
 

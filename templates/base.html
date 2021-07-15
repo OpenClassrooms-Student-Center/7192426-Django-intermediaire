@@ -8,13 +8,13 @@
         <div class="sidebar">
             <h1>FotoBlog</h1>
             {%  if user.is_authenticated %}
-                <p>Hey {{ user }}!</p>
+                <p>Salut, {{ user }} !</p>
                 <img class="avatar" src="{% static 'images/default_profile.png'%}">
-                <p><a href="{% url 'home' %}">Home</a></p>
-                <p><a href="{% url 'photo_upload' %}">Upload Photo</a></p>
-                <p><a href="">Change Profile Photo</a></p>
-                <p><a href="{% url 'password_change' %}">Change Password</a></p>
-                <p><a href="{% url 'logout' %}">Log Out</a></p>
+                <p><a href="{% url 'home' %}">Accueil</a></p>
+                <p><a href="{% url 'photo_upload' %}">Téléverser une photo</a></p>
+                <p><a href="">Changer la photo de profil</a></p>
+                <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
+                <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
             {% endif %}
         </div>
         <div class="main">
