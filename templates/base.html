@@ -15,7 +15,7 @@
                     <img class="avatar" src="{% static 'images/default_profile.png'%}">
                 {% endif %}
                 <p><a href="{% url 'home' %}">Accueil</a></p>
-                <p><a href="{% url 'photo_feed' %}">Photo Feed</a></p>
+                <p><a href="{% url 'photo_feed' %}">Flux de photos</a></p>
                 {% if perms.blog.add_blog %}
                     <p><a href="{% url 'blog_create' %}">Écrire un billet</a></p>
                 {% endif %}
