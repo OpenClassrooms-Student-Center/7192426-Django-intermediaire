@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load blog_extras %}
 {% block content %}
-    <h2>Your Feed</h2>
+    <h2>Votre flux</h2>
     <div class="grid-container">
         {% for instance in blogs_and_photos %}
             {% if instance|model_type == 'Blog' %}
@@ -9,7 +9,7 @@
                     <a href="{% url 'view_blog' instance.id %}">
                         <h4>Billet : {{ instance.title }}</h4>
                         <img src="{{ instance.photo.image.url }}">
-                        <p><strong>Written by {{ instance.contributors.all|join:", " }}</strong></p>
+                        <p><strong>Écrit par {{ instance.contributors.all|join:", " }}</strong></p>
                         <p>{{ instance.date_created }}</p>
                     </a>
                 </div>
@@ -17,7 +17,7 @@
                 <div class="post">
                     <img src="{{ instance.image.url }}">
                     <p>{{ instance.caption }}</p>
-                    <p><strong>Taken by {{ instance.uploader }}</strong></p>
+                    <p><strong>Prise par {{ instance.uploader }}</strong></p>
                     <p>{{ instance.date_created }}</p>
                 </div>
             {% endif %}
