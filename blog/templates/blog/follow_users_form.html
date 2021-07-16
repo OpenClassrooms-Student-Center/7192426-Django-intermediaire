@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Follow Users</h2>
+    <h2>Suivre des utilisateurs</h2>
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <button type="submit" >Confirm</button>
+        <button type="submit" >Confirmer</button>
     </form>
 {% endblock content %}

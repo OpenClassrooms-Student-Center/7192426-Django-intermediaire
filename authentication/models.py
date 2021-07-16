@@ -15,7 +15,8 @@ class User(AbstractUser):
     follows = models.ManyToManyField(
         'self',
         limit_choices_to={'role': CREATOR},
-        symmetrical=False
+        symmetrical=False,
+        verbose_name='suit'
     )
 
     def save(self, *args, **kwargs):
