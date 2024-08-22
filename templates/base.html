@@ -26,7 +26,10 @@
                 <p><a href="{% url 'follow_users' %}">Suivre des utilisateurs</a></p>
                 <p><a href="{% url 'upload_profile_photo' %}">Changer la photo de profil</a></p>
                 <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
-                <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Se déconnecter</button>
+                </form>
             {% endif %}
         </div>
         <div class="main">
